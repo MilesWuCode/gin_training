@@ -9,11 +9,7 @@ import (
 )
 
 func init() {
-	// json
-	// logrus.SetFormatter(&logrus.JSONFormatter{})
-
-	// text
-	logrus.SetFormatter(&logrus.TextFormatter{})
+	logrus.SetFormatter(&logrus.JSONFormatter{})
 
 	file, _ := os.OpenFile("logrus.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 
