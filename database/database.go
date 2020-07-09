@@ -3,11 +3,11 @@ package database
 import (
 	"fmt"
 	"mygo/model"
-	"os"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	_ "github.com/joho/godotenv/autoload"
+	"github.com/spf13/viper"
 )
 
 var (
@@ -16,11 +16,11 @@ var (
 )
 
 func Init() {
-	host := os.Getenv("DB_HOST")
-	port := os.Getenv("DB_PORT")
-	dbName := os.Getenv("DB_DATABASE")
-	userName := os.Getenv("DB_USERNAME")
-	password := os.Getenv("DB_PASSWORD")
+	host := viper.GetString("db.host")
+	port := viper.GetString("db.port")
+	dbName := viper.GetString("db.database")
+	userName := viper.GetString("db.username")
+	password := viper.GetString("db.password")
 
 	dialect := fmt.Sprintf("%s:%s@(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", userName, password, host, port, dbName)
 

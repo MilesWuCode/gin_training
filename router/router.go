@@ -7,18 +7,18 @@ import (
 )
 
 func Init() {
-	router := router()
+	router := Router()
 
 	router.Run()
 }
 
-func router() *gin.Engine {
+func Router() *gin.Engine {
 	router := gin.Default()
+
+	userController := controller.UserController{}
 
 	users := router.Group("/users")
 	{
-		userController := controller.UserController{}
-
 		users.GET("", userController.Index)
 		users.GET("/:id", userController.Show)
 		users.POST("", userController.Create)
@@ -26,10 +26,10 @@ func router() *gin.Engine {
 		users.DELETE("/:id", userController.Delete)
 	}
 
+	bookController := controller.BookController{}
+
 	books := router.Group("/books")
 	{
-		bookController := controller.BookController{}
-
 		books.GET("", bookController.Index)
 		books.GET("/:id", bookController.Show)
 		books.POST("", bookController.Create)

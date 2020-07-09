@@ -14,6 +14,8 @@ go mod download
 go mod tidy
 # 看環境變數
 go env
+# 測試
+go test ./...
 ```
 
 ## Features
@@ -21,3 +23,4 @@ go env
 - restful/mvc/repository+service
 - graphql
 - jwt
+- test
