@@ -16,6 +16,10 @@ go mod tidy
 go env
 # 測試
 go test ./...
+# build
+go build main.go
+# 執行
+./main
 ```
 
 ## Features
