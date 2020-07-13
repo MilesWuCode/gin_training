@@ -44,4 +44,6 @@ func Close() {
 
 func AutoMigration() {
 	db.AutoMigrate(&model.User{}, &model.Book{})
+
+	db.Model(&model.Book{}).AddForeignKey("user_id", "users(id)", "CASCADE", "CASCADE")
 }

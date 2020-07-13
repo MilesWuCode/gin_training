@@ -6,5 +6,6 @@ import (
 
 type Book struct {
 	gorm.Model
-	Name string `gorm:"unique;not null" form:"name" json:"name" binding:"required"`
+	Name   string `gorm:"not null" form:"name" json:"name" binding:"required"`
+	UserID uint   `gorm:"not null" form:"user_id" json:"user_id" binding:"required"`
 }

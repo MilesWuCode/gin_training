@@ -16,7 +16,7 @@ func (service UserService) GetAll() ([]User, error) {
 
 	var userData []User
 
-	if err := db.Find(&userData).Error; err != nil {
+	if err := db.Preload("Books").Find(&userData).Error; err != nil {
 		return nil, err
 	}
 
@@ -28,7 +28,7 @@ func (service UserService) Get(id string) (User, error) {
 
 	var userData User
 
-	if err := db.Where("id = ?", id).First(&userData).Error; err != nil {
+	if err := db.Preload("Books").Where("id = ?", id).First(&userData).Error; err != nil {
 		return userData, err
 	}
 
